@@ -1,0 +1,7 @@
+*.iml
+.idea
+*/.idea
+node_modules
+id.rsa
+*.pem
+*.crt
