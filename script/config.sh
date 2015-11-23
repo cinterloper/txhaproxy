@@ -8,3 +8,6 @@ ERROR_HANDLE() { # you can probably do something more creative with this if you 
  fi
  echo $1
 }
+REQUEST_HOSTNAME() {
+  
+}
