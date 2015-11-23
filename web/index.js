@@ -7,17 +7,17 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var yaml = require('js-yaml');
 var fs   = require('fs');
-var app = express()
+var app = express();
 var md5sum = crypto.createHash('md5');
 var dgst ;
-var pillarData
+var pillarData;
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
 
-app.use(function (req, res) {
+app.post('/config',function (req, res) {
   md5sum = crypto.createHash('md5');
   var stuff = req.body
   if(stuff.haproxy != null){
@@ -25,7 +25,6 @@ app.use(function (req, res) {
      pillarData = stuff
 
   }
-
 
   res.setHeader('Content-Type', 'text/plain')
   res.write('you posted:\n')
@@ -36,7 +35,9 @@ app.use(function (req, res) {
   fs.writeFile('/srv/pillar/example.sls', pillar, 'utf8', doReload);
   res.end(dgst)
 })
-
+app.get('/config',function (req, res) {
+  res.end(fs.readFileSync('/etc/haproxy/haproxy.conf'))
+})
 
 var doReload = function() {
   if (exec(' salt-call --pillar-root=/srv/pillar --local state.highstate ;').code !== 0) {
