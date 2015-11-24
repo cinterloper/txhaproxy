@@ -20,14 +20,6 @@
             "user": "haproxy"
         }, 
         "enabled": true, 
-        "userlists": {
-            "userlist1": {
-                "users": {
-                    "john": "insecure-password doe", 
-                    "sam": "insecure-password frodo"
-                }
-            }
-        }, 
         "backends": {
             "backend1": {
                 "balance": "roundrobin", 
