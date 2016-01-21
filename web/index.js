@@ -44,6 +44,9 @@ app.post('/config', function (req, res) {
 app.get('/config', function (req, res) {
     res.end(fs.readFileSync('/etc/haproxy/haproxy.conf'))
 })
+app.get('/vars', function (req, res) {
+    res.end(fs.readFileSync('/srv/pillar/example.sls'))
+})
 
 
 var doReload = function () {
