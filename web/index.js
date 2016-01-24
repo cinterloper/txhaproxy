@@ -45,7 +45,9 @@ app.get('/config', function (req, res) {
     res.end(fs.readFileSync('/etc/haproxy/haproxy.conf'))
 })
 app.get('/vars', function (req, res) {
-    res.end(fs.readFileSync('/srv/pillar/example.sls'))
+    yaml.safeLoadAll(fs.readFileSync('/srv/pillar/example.sls'), function(doc) {
+      res.end(JSON.stringify(doc))
+    })
 })
 
 
