@@ -1,6 +1,0 @@
-
-state_top: /srv/salt/top.sls
-file_roots:
-  base:
-    - /srv/salt/
-file_client: local
