@@ -1,0 +1,14 @@
+FROM cinterloper/lash
+ARG MINION_ID
+ENV MINION_ID ${MINION_ID}
+ARG SALT_MASTER
+ENV SALT_MASTER ${SALT_MASTER}
+RUN apt update
+RUN apt install -y haproxy salt-minion
+RUN echo $MINION_ID > /etc/salt/minion_id
+RUN echo "master: $SALT_MATER" >> /etc/salt/minion
+RUN mkdir /opt/txhaproxy
+RUN 
+ADD script /opt/txhaproxy/
+ADD supervisord.conf /etc/
+CMD supervisord

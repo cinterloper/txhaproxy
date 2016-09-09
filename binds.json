@@ -1,5 +1,0 @@
-{
-  "txhaproxy/salt/":"/srv/salt",
-  "txhaproxy/web/":"/opt/web",
-  "txhaproxy/pillar/":"/srv/pillar"
-}
